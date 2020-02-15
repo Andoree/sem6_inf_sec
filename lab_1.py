@@ -52,3 +52,15 @@ AdjustedImpact = min(10, 10.41 * (1 - (1 - c * cr) * (1 - i * ir) * (1 - a * ar)
 AdjustedBaseScore = ((0.6 * AdjustedImpact) + (0.4 * Exploitability) - 1, 5) * f_Impact
 AdjustedTemporal = AdjustedBaseScore * e * rl * rc
 EnvironmentalScore = np.round((AdjustedTemporal + (10 - AdjustedTemporal) * cdp) * td)
+
+if 9 <= BaseScore <= 10:
+    lvl = 'Критический'
+elif 7 <= BaseScore <= 8.9:
+    lvl = 'Высокий'
+elif 4 <= BaseScore <= 6.9:
+    lvl = 'Средний'
+elif 0.1 <= BaseScore <= 3.9:
+    lvl = 'Низкий'
+else:
+    lvl = 'Информационный'
+print(f'Уровень опасности FortiGuard: {lvl}')
